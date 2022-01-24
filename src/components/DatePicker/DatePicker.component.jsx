@@ -1,27 +1,38 @@
-import React, { useState } from 'react';
-//import useDataFetch from '../../hooks/useDataFetch.js';
-import { getDateToday } from '../../utils/getDateToday.js';
-import './DatePicker.styles.css';
+import React from 'react';
+import { useImage } from '../../providers/Images.provider.jsx';
+import './DatePicker.styles.js';
+import {
+  ButtonDatePicker,
+  FormDatePicker,
+  InputDatePicker,
+} from './DatePicker.styles.js';
 
 function DatePicker() {
-  const today = getDateToday();
-  console.log(today);
-  const [dateValue, setDateValue] = useState(today);
+  const { date, setDate } = useImage();
 
-  const handleSubmit = () => {
-    console.log('hola');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(date);
   };
 
   const handleDateValue = (e) => {
-    console.log(e.target.value);
-    setDateValue(e.target.value);
+    setDate(e.target.value);
   };
 
   return (
-    <form className="find-image" onSubmit={handleSubmit}>
-      <input type="date" value={dateValue} onChange={handleDateValue} />
-      <button type="submit">Buscar</button>
-    </form>
+    <>
+      <FormDatePicker onSubmit={handleSubmit}>
+        <InputDatePicker
+          type="date"
+          role="date-input"
+          value={date}
+          onChange={handleDateValue}
+        />
+        <ButtonDatePicker role="date-submit" type="submit">
+          Buscar
+        </ButtonDatePicker>
+      </FormDatePicker>
+    </>
   );
 }
 

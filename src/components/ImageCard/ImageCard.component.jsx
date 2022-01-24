@@ -1,9 +1,15 @@
-import useDataFetch from '../../hooks/useDataFetch';
-import './ImageCard.styles.css';
+import { useImage } from '../../providers/Images.provider';
+import { ImageCardContent, ImageCardPicture } from './ImageCard.styles';
 
 function ImageCard() {
-  const img = useDataFetch('1998-08-09');
-  return <img src={img.data.url} alt="Foto" />;
+  const { data } = useImage();
+  return (
+    <ImageCardContent role="image-content" className="image-content">
+      <h1 role="image-title">{data.title}</h1>
+      <p role="image-description">{data.explanation}</p>
+      <ImageCardPicture role="image-picture" src={data.url} alt="Foto" />
+    </ImageCardContent>
+  );
 }
 
 export default ImageCard;
