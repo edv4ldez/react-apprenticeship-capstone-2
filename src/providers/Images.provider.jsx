@@ -14,14 +14,11 @@ function useImage() {
 }
 
 function ImageProvider({ children }) {
-  const [imageData, setImageData] = useState('');
   const today = getDateToday();
   const [dateValue, setDateValue] = useState(today);
   const { data } = useDataFetch(dateValue);
   return (
-    <AppContext.Provider
-      value={{ data, imageData, setImageData, dateValue, setDateValue }}
-    >
+    <AppContext.Provider value={{ data, dateValue, setDateValue }}>
       {children}
     </AppContext.Provider>
   );

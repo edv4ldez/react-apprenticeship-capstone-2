@@ -8,15 +8,14 @@ import {
 } from './DatePicker.styles.js';
 
 function DatePicker() {
-  const { date, setDate } = useImage();
+  const { dateValue, setDateValue } = useImage();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(date);
   };
 
   const handleDateValue = (e) => {
-    setDate(e.target.value);
+    setDateValue(e.target.value);
   };
 
   return (
@@ -25,7 +24,7 @@ function DatePicker() {
         <InputDatePicker
           type="date"
           role="date-input"
-          value={date}
+          value={dateValue}
           onChange={handleDateValue}
         />
         <ButtonDatePicker role="date-submit" type="submit">

@@ -31,7 +31,7 @@ function useDataFetch(date) {
       }
     };
     fetchData();
-  }, []);
+  }, [date]);
 
   return state;
 }
