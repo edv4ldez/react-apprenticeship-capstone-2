@@ -4,7 +4,7 @@ import './Navbar.styles.css';
 function Navbar() {
   return (
     <nav>
-      <a className="home-button" href="home">
+      <a className="home-button" href="/">
         <img className="home-logo" src="./assets/wizeline-logo.jpeg" />
       </a>
     </nav>

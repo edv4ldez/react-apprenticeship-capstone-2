@@ -5,24 +5,45 @@ import AppContext from '../../../context/AppContext.context';
 describe('Testing ImageCard.component', () => {
 
   const context = {
-    date: '2022-01-23',
     setDate: function(){},
-    data: {
-      title: 'Saturno',
-      explanation: 'Si lo intentas y fallas, Felicitaciones!. La mayoria ni siquiera lo intenta',
-      url: 'https://t1.ev.ltmcdn.com/es/posts/6/7/6/cuantos_planetas_hay_en_el_sistema_solar_universo_y_via_lactea_1676_600.jpg'
+    dateValue: '2022-01-23',
+    image : {
+      data: {
+        title: 'Saturno',
+        explanation: 'Si lo intentas y fallas, Felicitaciones!. La mayoria ni siquiera lo intenta',
+        url: 'https://t1.ev.ltmcdn.com/es/posts/6/7/6/cuantos_planetas_hay_en_el_sistema_solar_universo_y_via_lactea_1676_600.jpg'
+      },
+      error: null
     }
   };
 
-  test('', () => {
+  const contextError = {
+    setDate: function(){},
+    dateValue: '2022-01-23',
+    image : {
+      data: {},
+      error: 'There was an error, please try again'
+    }
+  };
+
+  test('should return the image data', () => {
     render(
       <AppContext.Provider value={context}>
         <ImageCard/>
       </AppContext.Provider>
     );
-    const content = screen.getByRole('image-content');    
-    console.log(screen.findAllByText('Saturno'));
-    
+    const image = screen.getByRole('image-picture');    
+    expect(image.src).toBe('https://t1.ev.ltmcdn.com/es/posts/6/7/6/cuantos_planetas_hay_en_el_sistema_solar_universo_y_via_lactea_1676_600.jpg');
+  });
+
+  test('should show image of cat working', () => {
+    render(
+      <AppContext.Provider value={contextError}>
+        <ImageCard/>
+      </AppContext.Provider>
+    );
+    const image = screen.getByRole('image-picture');    
+    expect(image.src).toBe('http://localhost/assets/error.gif');
   });
 
 });

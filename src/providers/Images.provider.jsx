@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import AppContext from '../context/AppContext.context';
 import useDataFetch from '../hooks/useDataFetch';
 import { getDateToday } from '../utils/getDateToday';
@@ -14,11 +14,18 @@ function useImage() {
 }
 
 function ImageProvider({ children }) {
+  console.log('Provider');
   const today = getDateToday();
   const [dateValue, setDateValue] = useState(today);
-  const { data } = useDataFetch(dateValue);
+  const image = useDataFetch(dateValue);
+  const setterDate = useCallback(
+    (date) => {
+      setDateValue(date);
+    },
+    [setDateValue]
+  );
   return (
-    <AppContext.Provider value={{ data, dateValue, setDateValue }}>
+    <AppContext.Provider value={{ image, dateValue, setterDate }}>
       {children}
     </AppContext.Provider>
   );

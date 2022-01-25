@@ -4,12 +4,11 @@ import AppContext from '../../../context/AppContext.context';
 import { getDateToday } from '../../../utils/getDateToday';
 
 describe('Testing DatePicker.component', () => {
-  const today = getDateToday();
 
   const context = {
-    date: today,
-    setDate: function(){},
-    data: {}
+    setterDate: function(){}, 
+    dateValue: '2022-01-23',
+    image: {}
   };
 
   test('should return initial date', () => {
@@ -32,6 +31,7 @@ describe('Testing DatePicker.component', () => {
     
     const input = screen.getByRole('date-input');
     fireEvent.change(input, {target: {value: '2022-01-20'}});
+    expect(input.value).toBe('2022-01-20');
     
   });
   

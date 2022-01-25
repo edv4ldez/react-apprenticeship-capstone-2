@@ -8,6 +8,10 @@ export const ImageCardContent = styled.div`
   width: 1200px;
   align-self: center;
   border-radius: 30px;
+  p {
+    padding: 20px;
+    font-size: 20px;
+  }
 
   @media (max-width: 1007px) {
     font-size: 12px;
@@ -23,6 +27,9 @@ export const ImageCardContent = styled.div`
     padding-top: 20px;
     font-size: 12px;
     align-self: center;
+    p {
+      font-size: 14px;
+    }
   }
 `;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useImage } from '../../providers/Images.provider.jsx';
 import './DatePicker.styles.js';
 import {
@@ -8,14 +8,17 @@ import {
 } from './DatePicker.styles.js';
 
 function DatePicker() {
-  const { dateValue, setDateValue } = useImage();
+  console.log('DatePicker');
+  const { dateValue, setterDate } = useImage();
+  const [dateInput, setDateInput] = useState(dateValue);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setterDate(dateInput);
   };
 
   const handleDateValue = (e) => {
-    setDateValue(e.target.value);
+    setDateInput(e.target.value);
   };
 
   return (
@@ -24,7 +27,7 @@ function DatePicker() {
         <InputDatePicker
           type="date"
           role="date-input"
-          value={dateValue}
+          value={dateInput}
           onChange={handleDateValue}
         />
         <ButtonDatePicker role="date-submit" type="submit">
@@ -35,4 +38,4 @@ function DatePicker() {
   );
 }
 
-export default DatePicker;
+export default React.memo(DatePicker);
