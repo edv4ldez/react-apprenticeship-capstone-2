@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useImage } from '../../providers/Images.provider.jsx';
 import './DatePicker.styles.js';
 import {
@@ -24,6 +24,7 @@ function DatePicker() {
   return (
     <>
       <FormDatePicker onSubmit={handleSubmit}>
+        <b>{'Select date: '}</b>
         <InputDatePicker
           type="date"
           role="date-input"
@@ -38,4 +39,4 @@ function DatePicker() {
   );
 }
 
-export default React.memo(DatePicker);
+export default memo(DatePicker);

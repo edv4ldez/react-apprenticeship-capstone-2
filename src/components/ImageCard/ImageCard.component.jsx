@@ -1,5 +1,10 @@
+import { memo } from 'react';
 import { useImage } from '../../providers/Images.provider';
-import { ImageCardContent, ImageCardPicture } from './ImageCard.styles';
+import {
+  ImageCardContent,
+  ImageCardPicture,
+  ImageCardVideo,
+} from './ImageCard.styles';
 
 function ImageCard() {
   console.log('Image');
@@ -11,7 +16,11 @@ function ImageCard() {
         <ImageCardContent role="image-content" className="image-content">
           <h1 role="image-title">{data.title}</h1>
           <p role="image-description">{data.explanation}</p>
-          <ImageCardPicture role="image-picture" src={data.url} alt="Foto" />
+          {data.media_type === 'image' ? (
+            <ImageCardPicture role="image-picture" src={data.url} alt="Foto" />
+          ) : (
+            <ImageCardVideo role="image-video" src={data.url} alt="Foto" />
+          )}
         </ImageCardContent>
       ) : (
         <ImageCardContent role="image-content" className="image-content">
@@ -27,4 +36,4 @@ function ImageCard() {
   );
 }
 
-export default ImageCard;
+export default memo(ImageCard);
