@@ -7,7 +7,6 @@ import {
 } from './ImageCard.styles';
 
 function ImageCard() {
-  console.log('Image');
   const { image } = useImage();
   const { data, error } = image;
   return (

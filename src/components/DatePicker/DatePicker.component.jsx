@@ -8,7 +8,6 @@ import {
 } from './DatePicker.styles.js';
 
 function DatePicker() {
-  console.log('DatePicker');
   const { dateValue, setterDate } = useImage();
   const [dateInput, setDateInput] = useState(dateValue);
 

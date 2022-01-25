@@ -14,7 +14,6 @@ function useImage() {
 }
 
 function ImageProvider({ children }) {
-  console.log('Provider');
   const today = getDateToday();
   const [dateValue, setDateValue] = useState(today);
   const image = useDataFetch(dateValue);
