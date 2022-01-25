@@ -22,8 +22,13 @@ function ImageCard() {
           )}
         </ImageCardContent>
       ) : (
-        <ImageCardContent role="image-content" className="image-content">
+        <ImageCardContent role="image-content-error" className="image-content">
           <h1 role="image-title">{error}</h1>
+          <ImageCardPicture
+            role="image-picture-error"
+            src={'./assets/error.gif'}
+            alt="Foto"
+          />
         </ImageCardContent>
       )}
     </>

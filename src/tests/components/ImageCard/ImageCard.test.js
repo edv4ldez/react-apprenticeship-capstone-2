@@ -43,7 +43,7 @@ describe('Testing ImageCard.component', () => {
         <ImageCard/>
       </AppContext.Provider>
     );
-    const image = screen.getByRole('image-picture');    
+    const image = screen.getByRole('image-picture-error');    
     expect(image.src).toBe('http://localhost/assets/error.gif');
   });
 
